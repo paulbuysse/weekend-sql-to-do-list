@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +10,24 @@
     <script src="scripts/client.js"></script>
     <title>Paul's To Do List</title>
 </head>
+
 <body>
-    <input type="text" placeholder = "Enter New Task" id = "taskIn"></input>
-    <button id = "addTaskBtn">Add Task</button>
+    <section id="inputArea">
+        <input type="text" placeholder="Enter New Task" id="taskIn"></input>
+        <button id="addTaskBtn">Add Task</button>
+    </section>
+
+    <table id="taskTable">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Task</th>
+                <th>Status</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+    </table>
 </body>
+
 </html>
