@@ -1,6 +1,7 @@
 body {
     background-color: #404040;
     margin-right: 50px;
+    position: relative;
 }
 
 .taskTable {
@@ -17,6 +18,7 @@ header {
     /* color: white; */
     text-align: center;
     margin-left: 50px;
+    height: 100px;
 }
 
 #tableSec {
@@ -30,4 +32,13 @@ header {
 
 .table-success {
     color: black;
+}
+
+.isRed{
+    color: red;
+}
+
+#key {
+    display: inline-block;
+    margin-left: 50px;
 }

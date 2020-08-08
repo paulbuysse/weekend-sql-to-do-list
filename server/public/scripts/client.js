@@ -1,6 +1,6 @@
 $(document).ready(onReady);
 
-function onReady () {
+function onReady() {
     console.log('js jq');
 
     addClickers();
@@ -17,14 +17,14 @@ function deleteTask() {
     console.log('deleting...');
 
     let idToDelete = $(this).closest('tr').data('id');
-    
+
     $.ajax({
         method: 'DELETE',
         url: `/tasks/${idToDelete}`
     }).then(function (response) {
         console.log(response);
         getTasks();
-    }).catch( function (error) {
+    }).catch(function (error) {
         console.log('error in deleteTask DELETE', error);
     })
 };
@@ -69,7 +69,7 @@ function markDone() {
     });
 };
 
-function addTask () {
+function addTask() {
     console.log('adding task');
 
     let newTask = $('#taskIn').val();
@@ -91,7 +91,7 @@ function addTask () {
     $('#taskIn').val('');
 };
 
-function getTasks () {
+function getTasks() {
     console.log('getting tasks')
 
     $.ajax({
@@ -109,11 +109,11 @@ function getTasks () {
             let checkBtn = ''
 
             if (task.completed === false) {
-                completedStatus = 'X'
+                completedStatus = `<td class="isRed">X</td>`
                 greenStatus = ''
                 checkBtn = `<td><button class="markDoneBtn">&check;</button></td>`
             } else if (task.completed === true) {
-                completedStatus = '&check;'
+                completedStatus = '<td>&check;</td>'
                 greenStatus = `class="table-success"`
                 checkBtn = `<td></td>`
             };
@@ -121,7 +121,7 @@ function getTasks () {
             $('#taskTable').append(`<tr data-id="${task.id}" ${greenStatus}>
             ${checkBtn}
             <td>${task.task}</td>
-            <td>${completedStatus}</td>
+            ${completedStatus}
             <td><button class="deleteBtn">&#x1f5d1;</button></td>
             </tr>
             `)

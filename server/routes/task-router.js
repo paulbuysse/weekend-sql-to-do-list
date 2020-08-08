@@ -42,9 +42,9 @@ router.put('/:id', (req, res) => {
     WHERE "id" = $1
     `;
 
-    pool.query(queryText, [id]).then( (result) => {
+    pool.query(queryText, [id]).then((result) => {
         res.sendStatus(200);
-    }).catch( (error) => {
+    }).catch((error) => {
         console.log('error in pool.query PUT', error);
         res.sendStatus(500);
     });
@@ -58,9 +58,9 @@ router.delete('/:id', (req, res) => {
     WHERE "id" = $1;
     `;
 
-    pool.query(queryText, [id]).then( (result) => {
+    pool.query(queryText, [id]).then((result) => {
         res.sendStatus(200);
-    }).catch( (error) => {
+    }).catch((error) => {
         console.log('error in pool.query DELETE', error);
         res.sendStatus(500);
     });
