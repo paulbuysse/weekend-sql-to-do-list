@@ -8,7 +8,7 @@ function onReady () {
 };
 
 function addClickers() {
-    $('#inputArea').on('click', '#addTaskBtn', addTask);
+    $('header').on('click', '#addTaskBtn', addTask);
     $('#taskTable').on('click', '.markDoneBtn', markDone);
     $('#taskTable').on('click', '.deleteBtn', deleteTask);
 }
@@ -106,21 +106,23 @@ function getTasks () {
             let task = response[i];
             let completedStatus = ''
             let greenStatus = ''
+            let checkBtn = ''
 
             if (task.completed === false) {
                 completedStatus = 'X'
                 greenStatus = ''
+                checkBtn = `<td><button class="markDoneBtn">&check;</button></td>`
             } else if (task.completed === true) {
                 completedStatus = '&check;'
                 greenStatus = `class="table-success"`
+                checkBtn = `<td></td>`
             };
 
             $('#taskTable').append(`<tr data-id="${task.id}" ${greenStatus}>
-            <th>${i + 1}${'.'}</th>
+            ${checkBtn}
             <td>${task.task}</td>
             <td>${completedStatus}</td>
-            <td><button class="markDoneBtn">&check;</button></td>
-            <td><button class="deleteBtn">DELETE</button></td>
+            <td><button class="deleteBtn">&#x1f5d1;</button></td>
             </tr>
             `)
         }
