@@ -14,7 +14,22 @@ function addClickers() {
 function addTask () {
     console.log('adding task');
 
+    let newTask = $('#taskIn').val();
 
+    let taskToSend = {
+        toDo: newTask
+    };
+
+    $.ajax({
+        method: 'POST',
+        url: '/tasks',
+        data: taskToSend
+    }).then(function (response) {
+        console.log('response from task-router', response);
+        getTasks();
+    }).catch(function (error) {
+        console.log('error in addTask POST', error);
+    });
 };
 
 function getTasks () {
@@ -26,21 +41,17 @@ function getTasks () {
     }).then(function (response) {
         console.log('in getTasks GET', response);
 
-        // $('#taskTable').empty();
+        $('#taskTable').empty();
 
         for (let i = 0; i < response.length; i++) {
             let task = response[i];
             let completedStatus = ''
-
-            console.log(task.task);
 
             if (task.completed === false) {
                 completedStatus = 'Not done!'
             } else if (task.completed === true) {
                 completedStatus = 'Done!'
             };
-
-
 
             $('#taskTable').append(`<tr>
             <th>${i + 1}</th>
