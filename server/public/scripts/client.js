@@ -33,7 +33,11 @@ function markDone() {
     console.log('marked done!');
 
     let taskToMark = $(this).closest('tr').data('id');
+    let successfulTask = $(this).closest('tr');
     console.log(taskToMark);
+    console.log(successfulTask);
+
+    $(this).closest('tr').addClass('isGreen');
 
     let taskObject = {};
 
@@ -101,14 +105,17 @@ function getTasks () {
         for (let i = 0; i < response.length; i++) {
             let task = response[i];
             let completedStatus = ''
+            let greenStatus = ''
 
             if (task.completed === false) {
                 completedStatus = 'X'
+                greenStatus = ''
             } else if (task.completed === true) {
                 completedStatus = '&check;'
+                greenStatus = `class="table-success"`
             };
 
-            $('#taskTable').append(`<tr data-id="${task.id}">
+            $('#taskTable').append(`<tr data-id="${task.id}" ${greenStatus}>
             <th>${i + 1}${'.'}</th>
             <td>${task.task}</td>
             <td>${completedStatus}</td>

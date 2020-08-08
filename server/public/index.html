@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="vendors/bootstrap.css"> -->
+    <link rel="stylesheet" href="vendors/bootstrap.css">
     <link rel="stylesheet" href="styles/style.css">
     <script src="vendors/jquery.js"></script>
     <script src="scripts/client.js"></script>
@@ -12,15 +12,16 @@
 </head>
 
 <body>
-    <section id="inputArea">
+    <header>
+        <h1>To-Do Today:</h1>
         <input type="text" placeholder="Enter New Task" id="taskIn"></input>
         <button id="addTaskBtn">Add Task</button>
-    </section>
+    </header>
 <br>
-    <section>
-        <table>
+    <section id="tableSec">
+        <table class="taskTable table table-striped">
             <thead>
-                <tr>
+                <tr id="tableTop">
                     <th>#</th>
                     <th>Task</th>
                     <th>Status</th>
