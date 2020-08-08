@@ -32,4 +32,38 @@ router.post('/', (req, res) => {
     });
 });
 
+router.put('/:id', (req, res) => {
+    let task = req.body;
+    let id = req.params.id;
+
+    let queryText = `
+    UPDATE "task_list"
+    SET "completed" = true
+    WHERE "id" = $1
+    `;
+
+    pool.query(queryText, [id]).then( (result) => {
+        res.sendStatus(200);
+    }).catch( (error) => {
+        console.log('error in pool.query PUT', error);
+        res.sendStatus(500);
+    });
+});
+
+router.delete('/:id', (req, res) => {
+    let id = req.params.id;
+
+    let queryText = `
+    DELETE FROM "task_list"
+    WHERE "id" = $1;
+    `;
+
+    pool.query(queryText, [id]).then( (result) => {
+        res.sendStatus(200);
+    }).catch( (error) => {
+        console.log('error in pool.query DELETE', error);
+        res.sendStatus(500);
+    });
+});
+
 module.exports = router;
